@@ -21,15 +21,6 @@ export interface Section {
   [key: string]: React.FC<any>;
 }
 
-export interface HeroProps {
-  title: string;
-}
-
-export interface TitleDescriptionProps {
-  title: string;
-  description: string;
-}
-
 export interface SectionsDropdownProps {
   handleCloseDropdown: () => void;
 }
@@ -47,6 +38,8 @@ export type SectionSchemaType =
 export interface BaseSectionSchemaSetting {
   id: string;
   label: string;
+  placeholder?: string;
+  smallnote?: string;
 }
 
 type BaseSettingMap = {
@@ -100,48 +93,17 @@ export interface SectionSchema {
   settings: SectionSchemaSetting[];
 }
 
-// export interface RangeSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "range";
-//   min: number;
-//   max: number;
-//   step?: number;
-//   default?: number;
-//   unit?: string;
-// }
+// SECTION COMPONENT PROPS
 
-// export interface TextSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "text";
-//   default?: string;
-// }
-// export interface TextAreaSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "textarea";
-//   default?: string;
-// }
-// export interface CheckboxSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "checkbox";
-//   default?: boolean;
-// }
-// export interface NumberSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "number";
-//   default?: number;
-// }
+export interface HeroProps {
+  title: string;
+  subtitle: string;
+  subtitle_heading: string;
+  description: string;
+  text_alignment: "left" | "center" | "right" | "justify";
+}
 
-// export interface RadioSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "radio";
-//   options: SelectionOptionSectionSchemaSetting[];
-//   default?: string;
-// }
-// export interface SelectSectionSchemaSetting extends BaseSectionSchemaSetting {
-//   type: "select";
-//   options: SelectionOptionSectionSchemaSetting[];
-//   default?: string;
-// }
-
-// export type SectionSchemaSetting =
-//   | RangeSectionSchemaSetting
-//   | TextSectionSchemaSetting
-//   | TextAreaSectionSchemaSetting
-//   | CheckboxSectionSchemaSetting
-//   | NumberSectionSchemaSetting
-//   | RadioSectionSchemaSetting
-//   | SelectSectionSchemaSetting;
+export interface TitleDescriptionProps {
+  title: string;
+  description: string;
+}

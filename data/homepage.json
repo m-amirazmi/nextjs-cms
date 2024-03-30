@@ -1,32 +1,6 @@
 {
   "content": {
-    "hero__1": {},
-    "hero__2": {},
-    "titledescription__1": {},
-    "hero__3": {},
-    "titledescription__2": {},
-    "titledescription__3": {},
-    "hero__4": {},
-    "titledescription__4": {},
-    "hero__5": {},
-    "hero__6": {},
-    "titledescription__5": {},
-    "hero__7": {},
-    "titledescription__6": {}
+    "hero__1": {}
   },
-  "sections": [
-    "hero__1",
-    "hero__2",
-    "titledescription__1",
-    "hero__3",
-    "titledescription__2",
-    "titledescription__3",
-    "hero__4",
-    "titledescription__4",
-    "hero__5",
-    "hero__6",
-    "titledescription__5",
-    "hero__7",
-    "titledescription__6"
-  ]
+  "sections": ["hero__1"]
 }
