@@ -1,8 +1,8 @@
-import { Section, SectionsProps } from "@/lib/types";
+import { StringToComponent, SectionsProps } from "@/lib/types";
 import Hero from "./hero";
 import TitleDescription from "./title-description";
 
-export const sectionList: Section = {
+export const sectionList: StringToComponent = {
   hero: Hero,
   titledescription: TitleDescription,
 };

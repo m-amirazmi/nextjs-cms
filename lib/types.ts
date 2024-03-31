@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -17,7 +19,7 @@ export interface SectionsProps {
   sections: string[];
 }
 
-export interface Section {
+export interface StringToComponent {
   [key: string]: React.FC<any>;
 }
 
@@ -40,6 +42,7 @@ export interface BaseSectionSchemaSetting {
   label: string;
   placeholder?: string;
   smallnote?: string;
+  message?: string;
 }
 
 type BaseSettingMap = {
@@ -56,28 +59,28 @@ type OptionalSettingsMap = {
     min: number;
     max: number;
     step?: number;
-    default?: number;
+    defaultValue?: number;
     unit?: string;
   };
   text: {
-    default?: string;
+    defaultValue?: string;
   };
   textarea: {
-    default?: string;
+    defaultValue?: string;
   };
   checkbox: {
-    default?: boolean;
+    defaultValue?: boolean;
   };
   number: {
-    default?: boolean;
+    defaultValue?: boolean;
   };
   radio: {
     options: SelectionOptionSectionSchemaSetting[];
-    default?: string;
+    defaultValue?: string;
   };
   select: {
     options: SelectionOptionSectionSchemaSetting[];
-    default?: string;
+    defaultValue?: string;
   };
 };
 
@@ -106,4 +109,40 @@ export interface HeroProps {
 export interface TitleDescriptionProps {
   title: string;
   description: string;
+}
+
+export interface SectionsSchemabarProps {
+  schema: SectionSchemaSetting[];
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+export interface SectionSchemaWithId extends SectionSchema {
+  id: string;
+}
+
+// EDITOR STORE
+export interface EditorStore {
+  sections: string[];
+  content: {
+    [key: string]: {
+      [key: string]: string | number | boolean | undefined;
+    };
+  };
+  addNewSection: (sectionName: string) => void;
+}
+
+export interface TextInputProps {
+  id: string;
+  label: string;
+  placeholder: string;
+  defaultValue: string;
+  smallnote: string;
+}
+
+export interface TextAreaInputProps {
+  id: string;
+  label: string;
+  placeholder: string;
+  defaultValue: string;
+  smallnote: string;
 }

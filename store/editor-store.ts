@@ -1,17 +1,5 @@
-import { SectionSchema } from "@/lib/types";
+import { EditorStore, SectionSchema } from "@/lib/types";
 import { create } from "zustand";
-
-interface SectionContentText {}
-
-interface EditorStore {
-  sections: string[];
-  content: {
-    [key: string]: {
-      [key: string]: string | number | boolean | undefined;
-    };
-  };
-  addNewSection: (sectionName: string) => void;
-}
 
 export const useEditorStore = create<EditorStore>()((set) => ({
   sections: [],

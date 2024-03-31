@@ -18,21 +18,22 @@ export default function Hero({
 }
 
 export const heroSchema: SectionSchema = {
-  name: "hero",
+  name: "Hero",
   settings: [
     {
       id: "title",
       label: "Hero title",
       type: "text",
-      default: "Custom NextJS CMS",
+      defaultValue: "Custom NextJS CMS",
       placeholder: "Enter the hero title text",
       smallnote: "The title text will be appeared as H1 heading",
+      message: "The title must be less atleast 2 characters",
     },
     {
       id: "subtitle",
       label: "Hero subtitle",
       type: "text",
-      default: "NextJS | App Router",
+      defaultValue: "NextJS | App Router",
     },
     {
       id: "subtitle_heading",
@@ -48,7 +49,7 @@ export const heroSchema: SectionSchema = {
       id: "description",
       label: "Hero description",
       type: "textarea",
-      default: "The best personal custom NextJS CMS using JSON files",
+      defaultValue: "The best personal custom NextJS CMS using JSON files",
     },
     {
       id: "text_alignment",

@@ -11,3 +11,7 @@ export default function TitleDescription({
     </div>
   );
 }
+
+export const titleDescriptionSchema = {
+  name: "Title Description",
+};
