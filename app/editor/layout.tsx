@@ -1,10 +1,18 @@
+"use client";
+
 import { setContent } from "@/actions/content.action";
 import AddSection from "@/components/editor/add-section";
 import { Button } from "@/components/ui/button";
 import { LayoutProps } from "@/lib/types";
+import { useEditorStore } from "@/store/editor-store";
 import { CirclePlus } from "lucide-react";
 
 export default function EditorLayout({ children }: LayoutProps) {
+  const content = useEditorStore((state) => state.content);
+  const sections = useEditorStore((state) => state.sections);
+
+  console.log(content, sections);
+
   return (
     <div className="bg-muted">
       <div className="h-16 sticky top-0 border-b bg-background">

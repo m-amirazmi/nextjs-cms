@@ -3,6 +3,7 @@
 import { setContent } from "@/actions/content.action";
 import { SectionsDropdownProps } from "@/lib/types";
 import { Button } from "../ui/button";
+import { useEditorStore } from "@/store/editor-store";
 
 const list = [
   {
@@ -18,11 +19,14 @@ const list = [
 export default function SectionsDropdown({
   handleCloseDropdown,
 }: SectionsDropdownProps) {
-  const handleSetContent = async (name: string) => {
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("page", "homepage");
-    await setContent(formData);
+  const addNewSection = useEditorStore((state) => state.addNewSection);
+
+  const handleSetContent = (name: string) => {
+    // const formData = new FormData();
+    // formData.append("name", name);
+    // formData.append("page", "homepage");
+    // await setContent(formData);
+    addNewSection(name);
     handleCloseDropdown();
   };
 
