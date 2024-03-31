@@ -16,8 +16,8 @@ export default function EditorContent({ children }: ContentProps) {
     <div
       className={cn(
         "flex-grow-0 flex-shrink-0 h-[calc(100vh-64px)]",
-        !isSectionSchemaOpen && "basis-[calc(100vw-600px)]",
-        isSectionSchemaOpen && "basis-[calc(100vw-900px)]"
+        !isSectionSchemaOpen && "basis-[calc(100vw-300px)]",
+        isSectionSchemaOpen && "basis-[calc(100vw-600px)]"
       )}
     >
       <div className="p-2 h-full">

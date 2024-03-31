@@ -11,9 +11,6 @@ export default function EditorLayout({ children }: LayoutProps) {
       <div className="flex">
         <SectionsSidebar />
         <EditorContent>{children}</EditorContent>
-        <div className="basis-[300px] flex-grow-0 flex-shrink-0 h-[calc(100vh-64px)] sticky top-16 border-l bg-background">
-          This is the selected component detail
-        </div>
       </div>
     </div>
   );
