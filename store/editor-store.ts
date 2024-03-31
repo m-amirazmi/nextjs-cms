@@ -21,3 +21,15 @@ export const useEditorStore = create<EditorStore>()((set) => ({
     });
   },
 }));
+
+interface EditorLayoutStore {
+  sectionSchemaOpen: boolean;
+  setSectionSchemaOpen: (condition: boolean) => void;
+}
+
+export const useEditorLayoutStore = create<EditorLayoutStore>()((set) => ({
+  sectionSchemaOpen: false,
+  setSectionSchemaOpen: (condition) => {
+    return set((state) => ({ sectionSchemaOpen: condition }));
+  },
+}));
