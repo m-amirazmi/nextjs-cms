@@ -2,7 +2,7 @@
 
 import { SectionSchemaWithId } from "@/lib/types";
 import { useEditorLayoutStore, useEditorStore } from "@/store/editor-store";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import SectionList from "../sections/section-list";
 import AddSection from "./add-section";
 import SectionsSchemabar from "./sections-schemabar";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 export default function SectionsSidebar() {
   const sections = useEditorStore((state) => state.sections);
+  const content = useEditorStore((state) => state.content);
   const { setSectionSchemaOpen, sectionSchemaOpen } = useEditorLayoutStore(
     (state) => state
   );
@@ -26,6 +27,8 @@ export default function SectionsSidebar() {
     e.preventDefault();
     setSectionSchemaOpen(false);
   };
+
+  console.log(content);
 
   return (
     <div
@@ -48,6 +51,7 @@ export default function SectionsSidebar() {
           <SectionsSchemabar
             handleSubmit={handleSubmit}
             schema={selectedSection.settings}
+            sectionId={selectedSection.id}
           />
         )}
     </div>

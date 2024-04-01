@@ -1,5 +1,24 @@
-import { EditorStore, SectionSchema } from "@/lib/types";
+import { SectionSchema } from "@/lib/types";
 import { create } from "zustand";
+
+export interface EditorStore {
+  sections: string[];
+  content: {
+    [key: string]: {
+      [key: string]: string | number | boolean | undefined;
+    };
+  };
+  addNewSection: (sectionName: string) => void;
+  updateSection: ({
+    name,
+    value,
+    sectionId,
+  }: {
+    name: string;
+    value: string | number | boolean;
+    sectionId: string;
+  }) => any;
+}
 
 export const useEditorStore = create<EditorStore>()((set) => ({
   sections: [],
@@ -18,6 +37,14 @@ export const useEditorStore = create<EditorStore>()((set) => ({
       else copyContent[sectionId] = {};
 
       return { sections: copySections, content: copyContent };
+    });
+  },
+  updateSection: ({ name, sectionId, value }) => {
+    return set((state) => {
+      const copyContent = { ...state.content };
+      copyContent[sectionId][name] = value;
+      console.log(copyContent);
+      return { content: copyContent };
     });
   },
 }));

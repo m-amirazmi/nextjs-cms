@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -111,24 +111,8 @@ export interface TitleDescriptionProps {
   description: string;
 }
 
-export interface SectionsSchemabarProps {
-  schema: SectionSchemaSetting[];
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-}
-
 export interface SectionSchemaWithId extends SectionSchema {
   id: string;
-}
-
-// EDITOR STORE
-export interface EditorStore {
-  sections: string[];
-  content: {
-    [key: string]: {
-      [key: string]: string | number | boolean | undefined;
-    };
-  };
-  addNewSection: (sectionName: string) => void;
 }
 
 export interface TextInputProps {
