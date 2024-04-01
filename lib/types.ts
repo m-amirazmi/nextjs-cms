@@ -23,10 +23,6 @@ export interface StringToComponent {
   [key: string]: React.FC<any>;
 }
 
-export interface SectionsDropdownProps {
-  handleCloseDropdown: () => void;
-}
-
 // SECTION SCHEMA TYPES
 export type SectionSchemaType =
   | "text"

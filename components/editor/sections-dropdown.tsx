@@ -1,7 +1,6 @@
 "use client";
 
 import { setContent } from "@/actions/content.action";
-import { SectionsDropdownProps } from "@/lib/types";
 import { Button } from "../ui/button";
 import { useEditorStore } from "@/store/editor-store";
 
@@ -15,6 +14,10 @@ const list = [
     title: "Title and description",
   },
 ];
+
+export interface SectionsDropdownProps {
+  handleCloseDropdown: () => void;
+}
 
 export default function SectionsDropdown({
   handleCloseDropdown,

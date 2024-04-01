@@ -1,13 +1,9 @@
-import About from "@/app/(main)/about/page";
-import Home from "@/app/(main)/page";
-import { DynamicPageObject, DynamicPageProps } from "@/lib/types";
+"use client";
 
-const pages: DynamicPageObject = {
-  homepage: Home,
-  about: About,
-};
+import Sections from "@/components/sections";
+import { useEditorStore } from "@/store/editor-store";
 
-export default function CustomPage({ params }: DynamicPageProps) {
-  const Page = pages[params.slug];
-  return <Page />;
+export default function CustomPage() {
+  const { content, sections } = useEditorStore((state) => state);
+  return <Sections content={content} sections={sections} />;
 }

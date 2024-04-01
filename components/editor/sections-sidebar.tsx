@@ -9,8 +9,7 @@ import SectionsSchemabar from "./sections-schemabar";
 import { cn } from "@/lib/utils";
 
 export default function SectionsSidebar() {
-  const sections = useEditorStore((state) => state.sections);
-  const content = useEditorStore((state) => state.content);
+  const { sections, content, updateSection } = useEditorStore((state) => state);
   const { setSectionSchemaOpen, sectionSchemaOpen } = useEditorLayoutStore(
     (state) => state
   );
@@ -20,6 +19,13 @@ export default function SectionsSidebar() {
 
   const handleSelectedSection = (section: SectionSchemaWithId) => {
     setSelectedSection(section);
+    section.settings.map((i) => {
+      updateSection({
+        name: i.id,
+        sectionId: section.id,
+        value: i.defaultValue,
+      });
+    });
     setSectionSchemaOpen(true);
   };
 
@@ -27,8 +33,6 @@ export default function SectionsSidebar() {
     e.preventDefault();
     setSectionSchemaOpen(false);
   };
-
-  console.log(content);
 
   return (
     <div

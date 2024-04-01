@@ -15,7 +15,7 @@ export interface EditorStore {
     sectionId,
   }: {
     name: string;
-    value: string | number | boolean;
+    value?: string | number | boolean;
     sectionId: string;
   }) => any;
 }
@@ -43,7 +43,6 @@ export const useEditorStore = create<EditorStore>()((set) => ({
     return set((state) => {
       const copyContent = { ...state.content };
       copyContent[sectionId][name] = value;
-      console.log(copyContent);
       return { content: copyContent };
     });
   },
