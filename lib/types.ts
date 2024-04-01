@@ -94,14 +94,6 @@ export interface SectionSchema {
 
 // SECTION COMPONENT PROPS
 
-export interface HeroProps {
-  title: string;
-  subtitle: string;
-  subtitle_heading: string;
-  description: string;
-  text_alignment: "left" | "center" | "right" | "justify";
-}
-
 export interface TitleDescriptionProps {
   title: string;
   description: string;

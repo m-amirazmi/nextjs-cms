@@ -3,7 +3,7 @@ import { LayoutProps } from "@/lib/types";
 
 export default function MainLayout({ children }: LayoutProps) {
   return (
-    <main>
+    <main className="min-h-screen">
       <Header />
       {children}
     </main>

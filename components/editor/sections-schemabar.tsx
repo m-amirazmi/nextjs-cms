@@ -34,7 +34,7 @@ export default function SectionsSchemabar({
   return (
     <div className="w-[300px] h-full bg-background border-r border-l p-4">
       <form onSubmit={handleSubmit} className="w-full">
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-4">
           <InputSettings sectionId={sectionId} settings={schema} />
         </div>
         <Button size="sm" className="w-full mt-6" onClick={handleSave}>
