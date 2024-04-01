@@ -1,15 +1,15 @@
 "use client";
 
 import { SectionSchemaWithId } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { useEditorLayoutStore, useEditorStore } from "@/store/editor-store";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import SectionList from "../sections/section-list";
 import AddSection from "./add-section";
 import SectionsSchemabar from "./sections-schemabar";
-import { cn } from "@/lib/utils";
 
 export default function SectionsSidebar() {
-  const { sections, content, updateSection } = useEditorStore((state) => state);
+  const { sections, updateSection } = useEditorStore((state) => state);
   const { setSectionSchemaOpen, sectionSchemaOpen } = useEditorLayoutStore(
     (state) => state
   );

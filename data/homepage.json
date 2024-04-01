@@ -1,6 +1,1 @@
-{
-  "content": {
-    "hero__1": {}
-  },
-  "sections": ["hero__1"]
-}
+{"content":{"hero__1":{"title":"This is hero section","subtitle":"NextJS | App Router","description":"The best personal custom NextJS CMS using JSON files"}},"sections":["hero__1"]}

@@ -10,6 +10,17 @@ export async function getContent(page: string) {
   return parsed;
 }
 
+export async function saveContent(formData: FormData) {
+  const data = formData.get("data") as string;
+  const page = formData.get("page") as string;
+  const parsedData = JSON.parse(data);
+  const updatedData = JSON.stringify(parsedData);
+  const jsonPath = process.cwd() + "/data/" + page + ".json";
+  console.log(parsedData);
+  await fs.writeFile(jsonPath, updatedData);
+  revalidatePath("/editor/" + page);
+}
+
 export async function setContent(formData: FormData) {
   "use server";
   const name = formData.get("name");
