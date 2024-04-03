@@ -1,3 +1,4 @@
+import { SchemaSettings } from "@/types/editor.types";
 import CheckboxInput from "./checkbox-input";
 import ColorPicker from "./color-picker";
 import ImagePicker from "./image-picker";
@@ -12,9 +13,7 @@ import UrlInput from "./url-input";
 import VideoInput from "./video-input";
 
 interface InputSettingsProps {
-  settings: {
-    type: string;
-  }[];
+  settings: SchemaSettings[];
 }
 
 interface InputSettingsObj {
@@ -36,6 +35,9 @@ const inputSettings: InputSettingsObj = {
   video: VideoInput,
 };
 
-export default function InputSettings({ name }: InputSettingsProps) {
-  return <div>InputSettings</div>;
+export default function InputSettings({ settings }: InputSettingsProps) {
+  return settings.map((i, k) => {
+    const Component = inputSettings[i.type];
+    return <Component key={k} {...i} />;
+  });
 }
