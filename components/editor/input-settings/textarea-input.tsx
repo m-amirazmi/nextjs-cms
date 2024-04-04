@@ -1,7 +1,7 @@
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { TextAreaInputProps } from "@/types/editor.types";
+import { InputSettingTypeProps } from "@/types/editor.types";
 
 export default function TextareaInput({
   id,
@@ -11,7 +11,7 @@ export default function TextareaInput({
   placeholder,
   smallnote,
   border,
-}: TextAreaInputProps) {
+}: InputSettingTypeProps<"textarea">) {
   return (
     <div
       className={cn(

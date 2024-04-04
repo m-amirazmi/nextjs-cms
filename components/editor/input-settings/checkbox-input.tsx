@@ -1,7 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { CheckboxInputProps } from "@/types/editor.types";
+import { InputSettingTypeProps } from "@/types/editor.types";
 
 export default function CheckboxInput({
   id,
@@ -10,7 +10,7 @@ export default function CheckboxInput({
   message,
   smallnote,
   border,
-}: CheckboxInputProps) {
+}: InputSettingTypeProps<"checkbox">) {
   return (
     <div
       className={cn(

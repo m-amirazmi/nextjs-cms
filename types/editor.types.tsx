@@ -50,6 +50,7 @@ type OptionalSettingsMap = {
   number: {
     defaultValue?: number;
     placeholder?: string;
+    step?: number;
   };
   radio: {
     options: InputSettingWithOption[];
@@ -91,8 +92,6 @@ export interface SectionSchema {
 export interface BaseInputSettingProps {
   border: boolean;
 }
-export type TextInputProps = MergedSetting<"text"> & BaseInputSettingProps;
-export type TextAreaInputProps = MergedSetting<"textarea"> &
-  BaseInputSettingProps;
-export type CheckboxInputProps = MergedSetting<"checkbox"> &
-  BaseInputSettingProps;
+
+export type InputSettingTypeProps<T extends InputSettingType> =
+  MergedSetting<T> & BaseInputSettingProps;

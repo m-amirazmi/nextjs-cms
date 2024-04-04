@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { TextInputProps } from "@/types/editor.types";
+import { InputSettingTypeProps } from "@/types/editor.types";
 
 export default function TextInput({
   id,
@@ -12,7 +12,7 @@ export default function TextInput({
   smallnote,
   defaultValue,
   border = true,
-}: TextInputProps) {
+}: InputSettingTypeProps<"text">) {
   return (
     <div
       className={cn(
