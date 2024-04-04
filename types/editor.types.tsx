@@ -86,4 +86,9 @@ export interface SectionSchema {
   settings: SchemaSettings[];
 }
 
-export type TextInputProps = MergedSetting<"text"> & { border: boolean };
+export interface BaseInputSettingProps {
+  border: boolean;
+}
+export type TextInputProps = MergedSetting<"text"> & BaseInputSettingProps;
+export type TextAreaInputProps = MergedSetting<"textarea"> &
+  BaseInputSettingProps;

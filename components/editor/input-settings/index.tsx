@@ -38,6 +38,6 @@ const inputSettings: InputSettingsObj = {
 export default function InputSettings({ settings }: InputSettingsProps) {
   return settings.map((i, k) => {
     const Component = inputSettings[i.type];
-    return <Component key={k} {...i} />;
+    return <Component key={k} {...i} border />;
   });
 }
