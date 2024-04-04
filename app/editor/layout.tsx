@@ -9,7 +9,7 @@ export default function EditorLayout({ children }: BaseLayoutProps) {
   };
 
   return (
-    <div className="bg-muted flex flex-col gap-y-6">
+    <div className="bg-muted min-h-screen w-full flex flex-col gap-y-6">
       <form action={createAboutPage}>
         <Button>add new page</Button>
       </form>
