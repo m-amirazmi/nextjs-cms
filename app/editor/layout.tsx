@@ -5,8 +5,7 @@ import { BaseLayoutProps } from "@/types/layout.types";
 export default function EditorLayout({ children }: BaseLayoutProps) {
   const createAboutPage = async () => {
     "use server";
-    const res = await createPage("about");
-    console.log("page", res);
+    await createPage("about");
   };
 
   return (

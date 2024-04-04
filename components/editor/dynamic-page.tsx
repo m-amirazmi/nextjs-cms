@@ -1,6 +1,6 @@
 "use client";
 
-import { Content, DynamicSections } from "@/types/store.types";
+import { Content } from "@/types/store.types";
 
 interface DynamicPageProps {
   content: Content;

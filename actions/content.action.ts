@@ -11,10 +11,15 @@ export async function getContent(page: string, type: "draft" | "prod") {
 }
 
 export async function createPage(page: string) {
-  const filePathDraft = JsonPagePath(page, "draft");
-  const filePathProd = JsonPagePath(page, "prod");
+  const filePathDraft = await JsonPagePath(page, "draft");
+  const filePathProd = await JsonPagePath(page, "prod");
 
-  const baseContent = { sections: {}, order: [] };
+  const baseContent = {
+    sections: {},
+    order: [],
+    created_at: new Date().getTime(),
+    updated_at: new Date().getTime(),
+  };
   const jsonStringContent = JSON.stringify(baseContent, null, 2);
 
   Promise.all([
