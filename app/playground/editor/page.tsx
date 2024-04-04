@@ -85,6 +85,27 @@ const inputSettings: SchemaSettings[] = [
   {
     type: "checkbox",
     id: "checkboxinput",
+    label: "Checkbox Input With Default Value, Error Message, Small Note",
+    smallnote: "This will required you to do something",
+    message: "Please tick this before continue",
+    defaultValue: true,
+  },
+  {
+    type: "checkbox",
+    id: "checkboxinput",
+    label: "Checkbox Input With Default Value, Small Note",
+    smallnote: "This will required you to do something",
+    defaultValue: true,
+  },
+  {
+    type: "checkbox",
+    id: "checkboxinput",
+    label: "Checkbox Input With Default Value",
+    defaultValue: true,
+  },
+  {
+    type: "checkbox",
+    id: "checkboxinput",
     label: "Checkbox Input",
   },
   {

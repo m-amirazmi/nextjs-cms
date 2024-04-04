@@ -15,7 +15,6 @@ export type InputSettingType =
 export interface BaseInputSetting {
   id: string;
   label: string;
-  placeholder?: string;
   smallnote?: string;
   message?: string;
 }
@@ -39,15 +38,18 @@ type OptionalSettingsMap = {
   };
   text: {
     defaultValue?: string;
+    placeholder?: string;
   };
   textarea: {
     defaultValue?: string;
+    placeholder?: string;
   };
   checkbox: {
     defaultValue?: boolean;
   };
   number: {
     defaultValue?: number;
+    placeholder?: string;
   };
   radio: {
     options: InputSettingWithOption[];
@@ -91,4 +93,6 @@ export interface BaseInputSettingProps {
 }
 export type TextInputProps = MergedSetting<"text"> & BaseInputSettingProps;
 export type TextAreaInputProps = MergedSetting<"textarea"> &
+  BaseInputSettingProps;
+export type CheckboxInputProps = MergedSetting<"checkbox"> &
   BaseInputSettingProps;
