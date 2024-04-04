@@ -3,7 +3,7 @@ import { SchemaSettings } from "@/types/editor.types";
 
 export default function PlaygroundEditor() {
   return (
-    <div className="flex flex-col gap-y-4 w-full">
+    <div className="flex flex-col gap-y-4 w-full justify-center items-center">
       <h2 className="text-xl">Input Settings</h2>
       <div className="flex flex-col gap-y-2 max-w-[500px] w-full">
         <InputSettings settings={inputSettings} />
