@@ -8,7 +8,6 @@ export default function RadioInput({
   id,
   label,
   options,
-  type,
   defaultValue,
   message,
   smallnote,

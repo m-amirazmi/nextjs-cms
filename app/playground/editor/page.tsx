@@ -186,6 +186,11 @@ const inputSettings: SchemaSettings[] = [
     label: "Range Input",
     max: 200,
     min: 0,
+    defaultValue: 50,
+    message: "Please select above 0",
+    smallnote: "This will be used for spacing and so on",
+    step: 0.01,
+    unit: "px",
   },
   {
     type: "select",
