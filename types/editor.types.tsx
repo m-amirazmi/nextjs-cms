@@ -24,7 +24,7 @@ type BaseSettingMap = {
 };
 
 export interface InputSettingWithOption {
-  value: string | number;
+  value: string;
   label: string;
 }
 
