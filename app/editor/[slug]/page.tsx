@@ -1,9 +1,7 @@
-"use client";
-
 import { getContent } from "@/actions/content.action";
-import { useContentStore } from "@/store/content.store";
+import DynamicPage from "@/components/editor/dynamic-page";
 import { CustomPageProps } from "@/types/editor-page.types";
-import { useEffect } from "react";
+import { Content } from "@/types/store.types";
 
 /**
  * Steps on getting the page content
@@ -15,20 +13,9 @@ import { useEffect } from "react";
  *
  */
 
-export default function CustomPage({ params }: CustomPageProps) {
+export default async function CustomPage({ params }: CustomPageProps) {
   const { slug } = params;
+  const content: Content = await getContent(slug, "draft");
 
-  const { orders, sections, setInitialSections } = useContentStore(
-    (state) => state
-  );
-
-  useEffect(() => {
-    const fetchContent = async () => {
-      const content = await getContent(slug, "prod");
-      setInitialSections(content);
-    };
-    fetchContent();
-  }, [slug, setInitialSections]);
-
-  return slug;
+  return <DynamicPage content={content} />;
 }
