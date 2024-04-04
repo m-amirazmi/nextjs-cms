@@ -62,7 +62,7 @@ export default function RangeInput({
               {min}
               {unit}
             </span>
-            <span className="border px-2 py-1 rounded">
+            <span className="border px-2 py-1 rounded font-semibold">
               {value}
               {unit}
             </span>

@@ -59,6 +59,7 @@ type OptionalSettingsMap = {
   select: {
     options: InputSettingWithOption[];
     defaultValue?: string;
+    placeholder?: string;
   };
   color: {
     defaultValue?: string;
