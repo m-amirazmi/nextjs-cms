@@ -1,3 +1,3 @@
 export interface CustomPageProps {
-  params: { slug: string };
+  params: { slug: string[] };
 }

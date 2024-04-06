@@ -2,19 +2,33 @@
 
 import { Content } from "@/types/store.types";
 import { promises as fs } from "fs";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-export async function getContent(page: string, type: "draft" | "prod") {
+export async function getContent(page: string, type: "draft" | "publish") {
   const jsonPath = await JsonPagePath(page, type);
   const raw = await fs.readFile(jsonPath, "utf8");
   const parsed: Content = JSON.parse(raw);
   return parsed;
 }
 
-export async function createPage(page: string) {
-  const filePathDraft = await JsonPagePath(page, "draft");
-  const filePathProd = await JsonPagePath(page, "prod");
+export async function createPage({
+  pagename,
+  pagetitle,
+  pagepath,
+  redirectUrl,
+}: {
+  pagename: string;
+  pagetitle: string;
+  pagepath: string;
+  redirectUrl?: string;
+}) {
+  const filePathDraft = await JsonPagePath(pagename, "draft");
+  const filePathProd = await JsonPagePath(pagename, "publish");
 
   const baseContent = {
+    path: pagepath,
+    title: pagetitle,
     sections: {},
     order: [],
     created_at: new Date().getTime(),
@@ -26,6 +40,8 @@ export async function createPage(page: string) {
     createJsonFile(filePathDraft, jsonStringContent),
     createJsonFile(filePathProd, jsonStringContent),
   ]);
+
+  if (redirectUrl) redirect(redirectUrl);
 
   return {
     draft: filePathDraft,
@@ -55,6 +71,6 @@ export const createJsonFile = async (filePath: string, jsonData: string) => {
   }
 };
 
-export const JsonPagePath = (page: string, type: "draft" | "prod") => {
+export const JsonPagePath = (page: string, type: "draft" | "publish") => {
   return process.cwd() + "/data/" + page + "." + type + ".json";
 };

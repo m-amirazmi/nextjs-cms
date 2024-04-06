@@ -15,7 +15,10 @@ import { Content } from "@/types/store.types";
 
 export default async function CustomPage({ params }: CustomPageProps) {
   const { slug } = params;
-  const content: Content = await getContent(slug, "draft");
+
+  const pagePath = slug.join("_");
+
+  const content: Content = await getContent(pagePath, "draft");
 
   return <DynamicPage content={content} />;
 }
