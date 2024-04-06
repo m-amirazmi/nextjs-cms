@@ -39,6 +39,8 @@ interface PageState {
   name: string;
 }
 
+// Todo: Set error if page name,title and path already exists
+
 export default function PageSelection({
   currentPage,
   pages,
