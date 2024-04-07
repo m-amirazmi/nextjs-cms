@@ -9,20 +9,12 @@ export default function EditorLayoutComponents() {
         <div className="flex flex-col gap-y-2">
           <h3 className="text-lg">Page Creation Dropdown</h3>
           <PageSelection
-            currentPage="Home"
             parentPath="/editor/"
             pages={[
               {
                 path: "home",
                 title: "Home",
-              },
-              {
-                path: "about",
-                title: "About",
-              },
-              {
-                path: "contact",
-                title: "Contact Us",
+                name: "home",
               },
             ]}
           />
