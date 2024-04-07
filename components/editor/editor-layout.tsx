@@ -7,11 +7,11 @@ export default async function EditorLayout({ children }: BaseLayoutProps) {
 
   return (
     <div className="bg-muted min-h-screen w-full flex">
-      <div className="basis-[360px] flex-grow-0 flex-shrink-0">
+      <div className="basis-[360px] flex-grow-0 flex-shrink-0 shadow">
         <Sidebar pages={pages} />
       </div>
-      <div className="bg-red-500 flex-grow-0 flex-shrink-0 basis-[calc(100%-360px)]">
-        {children}
+      <div className="flex-grow-0 flex-shrink-0 basis-[calc(100%-360px)] px-4">
+        <div className="shadow min-h-screen">{children}</div>
       </div>
     </div>
   );
