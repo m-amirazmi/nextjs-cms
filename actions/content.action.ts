@@ -1,6 +1,6 @@
 "use server";
 
-import { GeneralContent } from "@/types/editor-page.types";
+import { GeneralContent, Page } from "@/types/editor-page.types";
 import { Content } from "@/types/store.types";
 import { promises as fs } from "fs";
 import { redirect } from "next/navigation";
@@ -52,6 +52,21 @@ export async function createPage({
   ]);
 
   // Todo: Read, update and save pages list in general json
+  const generalFilePathDraft = await JsonPagePath("general", "draft");
+  const generalFilePathPublish = await JsonPagePath("general", "publish");
+
+  Promise.all([
+    updateGeneralPages(generalFilePathDraft, {
+      name: pagename,
+      path: "/" + pagepath,
+      title: pagetitle,
+    }),
+    updateGeneralPages(generalFilePathPublish, {
+      name: pagename,
+      path: "/" + pagepath,
+      title: pagetitle,
+    }),
+  ]);
 
   if (redirectUrl) redirect(redirectUrl);
 
@@ -81,6 +96,20 @@ export const createJsonFile = async (filePath: string, jsonData: string) => {
   } catch (error) {
     console.error("Error:", error);
   }
+};
+
+export const updateGeneralPages = async (
+  filePath: string,
+  jsonData: { name: string; path: string; title: string }
+) => {
+  const raw = await fs.readFile(filePath, "utf8");
+  const parsed = JSON.parse(raw);
+  const generalPages: Page[] = [...parsed.pages];
+  generalPages.push(jsonData);
+  parsed.pages = generalPages;
+  parsed.updated_at = new Date().getTime();
+  const stringParsed = JSON.stringify(parsed);
+  await fs.writeFile(filePath, stringParsed);
 };
 
 export const JsonPagePath = (page: string, type: "draft" | "publish") => {

@@ -1,11 +1,9 @@
 {
   "pages": [
-    {
-      "path": "/",
-      "title": "Home",
-      "name": "home"
-    }
+    { "path": "/", "title": "Home", "name": "home" },
+    { "name": "about-us", "path": "/about-us", "title": "About Us" },
+    { "name": "contact-us", "path": "/contact-us", "title": "Contact Us" }
   ],
   "created_at": 1712394706691,
-  "updated_at": 1712394706691
+  "updated_at": 1712477595307
 }
