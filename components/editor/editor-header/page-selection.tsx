@@ -4,6 +4,7 @@ import { createPage } from "@/actions/content.action";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -21,15 +22,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Page } from "@/types/editor-page.types";
 import { ChevronDown, Plus } from "lucide-react";
-import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface PageSelectionProps {
-  currentPage: string;
-  pages: { path: string; title: string }[];
+  pages: Page[];
   parentPath: string;
 }
 
@@ -42,7 +42,6 @@ interface PageState {
 // Todo: Set error if page name,title and path already exists
 
 export default function PageSelection({
-  currentPage,
   pages,
   parentPath,
 }: PageSelectionProps) {
@@ -53,6 +52,7 @@ export default function PageSelection({
   });
 
   const [hostpath, setHostpath] = useState("");
+  const [currentPage, setCurrentPage] = useState<Page>();
 
   const pathname = usePathname();
 
@@ -65,6 +65,16 @@ export default function PageSelection({
     if (port) withPort = ":" + port;
     setHostpath(protocol + "//" + host + withPort + "/");
   }, []);
+
+  useEffect(() => {
+    const page = pages.find((i) => {
+      const trimEditorPath = pathname.split("/editor/").join("/");
+      if (i.path === "/" && trimEditorPath === "/home") return i;
+      else if (i.path !== "/" && trimEditorPath === i.path) return i;
+      else return false;
+    });
+    setCurrentPage(page);
+  }, [pages, pathname]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name as keyof PageState;
@@ -90,7 +100,7 @@ export default function PageSelection({
       pagename: page.name,
       pagepath: page.path,
       pagetitle: page.title,
-      redirectUrl: pathname + "/" + page.path,
+      redirectUrl: "/editor" + "/" + page.path,
     });
   };
 
@@ -102,7 +112,7 @@ export default function PageSelection({
             variant="outline"
             className="w-full flex items-center gap-x-1 justify-between"
           >
-            <span>Page: {currentPage}</span>
+            <span>Page: {currentPage?.title}</span>
             <span>
               <ChevronDown size={18} />
             </span>
@@ -193,9 +203,11 @@ export default function PageSelection({
           </small>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={handleSubmit}>
-            Save changes
-          </Button>
+          <DialogClose asChild>
+            <Button type="submit" onClick={handleSubmit}>
+              Save changes
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

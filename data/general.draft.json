@@ -1,0 +1,11 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home",
+      "name": "home"
+    }
+  ],
+  "created_at": 1712394706691,
+  "updated_at": 1712394706691
+}

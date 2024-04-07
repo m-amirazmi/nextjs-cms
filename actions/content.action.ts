@@ -1,8 +1,8 @@
 "use server";
 
+import { GeneralContent } from "@/types/editor-page.types";
 import { Content } from "@/types/store.types";
 import { promises as fs } from "fs";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function getContent(page: string, type: "draft" | "publish") {
@@ -10,6 +10,16 @@ export async function getContent(page: string, type: "draft" | "publish") {
   const raw = await fs.readFile(jsonPath, "utf8");
   const parsed: Content = JSON.parse(raw);
   return parsed;
+}
+
+export async function getGeneralContent(
+  property: string,
+  type: "draft" | "publish"
+) {
+  const jsonPath = await JsonPagePath("/general", type);
+  const raw = await fs.readFile(jsonPath, "utf8");
+  const parsed: GeneralContent = JSON.parse(raw);
+  return parsed[property];
 }
 
 export async function createPage({
@@ -40,6 +50,8 @@ export async function createPage({
     createJsonFile(filePathDraft, jsonStringContent),
     createJsonFile(filePathProd, jsonStringContent),
   ]);
+
+  // Todo: Read, update and save pages list in general json
 
   if (redirectUrl) redirect(redirectUrl);
 

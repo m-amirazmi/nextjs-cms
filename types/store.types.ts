@@ -5,6 +5,8 @@ export interface DynamicSections {
 }
 
 export interface Content {
+  title: string;
+  path: string;
   sections: DynamicSections;
   orders: string[];
 }
